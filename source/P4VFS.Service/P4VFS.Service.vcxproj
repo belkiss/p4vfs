@@ -136,7 +136,7 @@
   </ImportGroup>
   <Target Name="Deploy" />
   <PropertyGroup>
-    <ServiceVCToolsVersion>$([System.Text.RegularExpressions.Regex]::Replace($(VCToolsVersion),"\.[0-9]+$",""))</ServiceVCToolsVersion>
+    <ServiceVCToolsVersion>$([System.Text.RegularExpressions.Regex]::Replace($(VCToolsRedistVersion),"\.[0-9]+$",""))</ServiceVCToolsVersion>
     <ServiceVCToolsFolder>$([System.IO.Path]::GetFullPath($(VCTargetsPath)\..\..\..\..\VC\Redist\MSVC))</ServiceVCToolsFolder>
     <ServiceVCRedistSourcePattern>$(ServiceVCToolsFolder)\$(ServiceVCToolsVersion).*\vcredist_x64.exe</ServiceVCRedistSourcePattern>
   </PropertyGroup>
