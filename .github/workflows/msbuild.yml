@@ -22,9 +22,6 @@ jobs:
   build:
     runs-on: windows-latest
 
-    strategy:
-      fail-fast: false
-
     steps:
     - name: Checkout the repo
       uses: actions/checkout@v3
@@ -42,4 +39,4 @@ jobs:
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild -clp:Summary -nologo -verbosity:m -restore -maxcpucount -p:CL_MPCount=%NUMBER_OF_PROCESSORS% -p:Configuration=${{env.BUILD_CONFIGURATION}} -p:Platform=${{env.BUILD_PLATFORM}} ${{env.SOLUTION_FILE_PATH}}
+      run: msbuild -clp:Summary -nologo -verbosity:m -restore -maxcpucount -p:Configuration=${{env.BUILD_CONFIGURATION}} -p:Platform=${{env.BUILD_PLATFORM}} ${{env.SOLUTION_FILE_PATH}}
