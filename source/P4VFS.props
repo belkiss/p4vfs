@@ -69,7 +69,7 @@
     <PerforceApiConfiguration>$(P4VFSConfiguration)</PerforceApiConfiguration>
     <PerforceApiDir>$(P4VFSExternalDir)/P4API/$(PerforceApiVersion)</PerforceApiDir>
     <PerforceApiIncludeDir>$(PerforceApiDir)/include</PerforceApiIncludeDir>
-    <PerforceApiLibDir>$(PerforceApiDir)/lib/x64.vs$(P4VFSVisualStudioEdition).dyn.$(PerforceApiConfiguration)</PerforceApiLibDir>
+    <PerforceApiLibDir>$(PerforceApiDir)/lib/x64.vs2019.dyn.$(PerforceApiConfiguration)</PerforceApiLibDir>
     <PerforceApiLibFiles>libclient.lib;libp4api.lib;libp4script.lib;libp4script_c.lib;libp4script_curl.lib;libp4script_sqlite.lib;librpc.lib;libsupp.lib</PerforceApiLibFiles>
 
     <!-- OpenSSL -->
