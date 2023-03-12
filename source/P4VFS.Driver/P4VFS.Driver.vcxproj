@@ -81,7 +81,6 @@
       <CompileAs>CompileAsC</CompileAs>
       <WppScanConfigurationData>Include\DriverTrace.h</WppScanConfigurationData>
       <WppEnabled>true</WppEnabled>
-      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <ResourceCompile />
     <ResourceCompile>
@@ -103,7 +102,6 @@
       <CompileAs>CompileAsC</CompileAs>
       <WppEnabled>true</WppEnabled>
       <WppScanConfigurationData>Include\DriverTrace.h</WppScanConfigurationData>
-      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <ResourceCompile />
     <ResourceCompile>

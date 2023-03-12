@@ -549,8 +549,8 @@ P4vfsServicePortConnect(
 		goto CLEANUP;
 	}
 
-	pConnectionHandle = (P4VFS_SERVICE_PORT_CONNECTION_HANDLE*)ExAllocatePoolWithTag( 
-																	NonPagedPool,
+	pConnectionHandle = (P4VFS_SERVICE_PORT_CONNECTION_HANDLE*)ExAllocatePool2(
+																	POOL_FLAG_NON_PAGED,
 																	sizeof(P4VFS_SERVICE_PORT_CONNECTION_HANDLE),
 																	P4VFS_SERVICE_PORT_HANDLE_ALLOC_TAG);
 
@@ -562,7 +562,6 @@ P4vfsServicePortConnect(
 	}
 
 	*ppConnectionCookie = pConnectionHandle;
-	RtlZeroMemory(pConnectionHandle, sizeof(*pConnectionHandle));
 	pConnectionHandle->pClientPort = pClientPort;
 
 	status = ObOpenObjectByPointer(
@@ -657,8 +656,8 @@ P4vfsControlPortConnect(
 		goto CLEANUP;
 	}
 
-	pConnectionHandle = (P4VFS_CONTROL_PORT_CONNECTION_HANDLE*)ExAllocatePoolWithTag( 
-																	NonPagedPool,
+	pConnectionHandle = (P4VFS_CONTROL_PORT_CONNECTION_HANDLE*)ExAllocatePool2(
+																	POOL_FLAG_NON_PAGED,
 																	sizeof(P4VFS_CONTROL_PORT_CONNECTION_HANDLE),
 																	P4VFS_CONTROL_PORT_HANDLE_ALLOC_TAG);
 
@@ -670,7 +669,6 @@ P4vfsControlPortConnect(
 	}
 
 	*ppConnectionCookie = pConnectionHandle;
-	RtlZeroMemory(pConnectionHandle, sizeof(*pConnectionHandle));
 	pConnectionHandle->pClientPort = pClientPort;
 
 CLEANUP:

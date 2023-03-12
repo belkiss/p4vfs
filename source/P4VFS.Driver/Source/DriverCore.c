@@ -139,8 +139,8 @@ P4vfsUserModeExecuteRequest(
 	}
 
 	// Allocate a reply message
-	pReplyMsg = (P4VFS_SERVICE_REPLY*)ExAllocatePoolWithTag( 
-											NonPagedPool,
+	pReplyMsg = (P4VFS_SERVICE_REPLY*)ExAllocatePool2(
+											POOL_FLAG_NON_PAGED,
 											sizeof(P4VFS_SERVICE_REPLY),
 											P4VFS_REPLY_MSG_ALLOC_TAG);
 
@@ -238,8 +238,8 @@ P4vfsUserModeResolveFile(
 	const ULONG dataNameOffset = requestMsgSize;
 	requestMsgSize += dataNameSize;
 
-	pRequestMsg = (P4VFS_SERVICE_MSG*)ExAllocatePoolWithTag( 
-											NonPagedPool,
+	pRequestMsg = (P4VFS_SERVICE_MSG*)ExAllocatePool2(
+											POOL_FLAG_NON_PAGED,
 											requestMsgSize,
 											P4VFS_SERVICE_MSG_ALLOC_TAG);
 
@@ -249,8 +249,6 @@ P4vfsUserModeResolveFile(
 		P4vfsTraceError(Core, L"P4vfsUserModeResolveFile: RequestMsg: Failed to P4VFS_SERVICE_MSG size [%d]", requestMsgSize); 
 		goto CLEANUP;
 	}
-
-	RtlZeroMemory(pRequestMsg, requestMsgSize);
 
 	pRequestMsg->operation = P4VFS_SERVICE_RESOLVE_FILE;
 	pRequestMsg->size = requestMsgSize;
@@ -555,11 +553,10 @@ P4vfsPushReparseActionInProgress(
 
 		if (pAction == NULL)
 		{
-			pAction = (P4VFS_REPARSE_ACTION*)ExAllocatePoolWithTag(NonPagedPool, sizeof(P4VFS_REPARSE_ACTION), P4VFS_REPARSE_ACTION_ALLOC_TAG);
+			pAction = (P4VFS_REPARSE_ACTION*)ExAllocatePool2(POOL_FLAG_NON_PAGED, sizeof(P4VFS_REPARSE_ACTION), P4VFS_REPARSE_ACTION_ALLOC_TAG);
 			RtlZeroMemory(pAction, sizeof(P4VFS_REPARSE_ACTION));
 		
 			pAction->fileKey = actionFileKey;
-			RtlZeroMemory(&actionFileKey, sizeof(actionFileKey));
 
 			pAction->pNext = g_FltContext.pReparseActionList;
 			g_FltContext.pReparseActionList = pAction;
@@ -729,7 +726,7 @@ P4vfsAllocateUnicodeString(
 		return STATUS_INVALID_BUFFER_SIZE;
 	}
 
-	pString->Buffer = (PWCH) ExAllocatePoolWithTag(NonPagedPool, pString->MaximumLength, poolTag);
+	pString->Buffer = (PWCH) ExAllocatePool2(POOL_FLAG_NON_PAGED, pString->MaximumLength, poolTag);
 	if (pString->Buffer == NULL)
 	{
 		return STATUS_INSUFFICIENT_RESOURCES;
