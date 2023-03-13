@@ -3,9 +3,7 @@ name: p4vfs-verify
 
 on:
   push:
-    branches: [ "main", "dev/ci-pipeline" ]
   pull_request:
-    branches: [ "main", "dev/ci-pipeline" ]
 
 env:
   SOLUTION_FILE_PATH: source/P4VFS.sln
