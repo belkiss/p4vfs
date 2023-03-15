@@ -39,7 +39,7 @@ jobs:
         msbuild-architecture: x64
 
     - name: Cache OpenSSL ${{env.ImageOS}} ${{env.ImageVersion}}
-      uses: actions/cache@v3.3.0
+      uses: actions/cache@v3.3.1
       with:
         path: |
           external/OpenSSL
