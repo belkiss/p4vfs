@@ -31,7 +31,7 @@ jobs:
         Write-Output "ImageVersion=$env:ImageVersion" >> $env:GITHUB_ENV
 
     - name: Checkout the repo
-      uses: actions/checkout@v3.4.0
+      uses: actions/checkout@v3.5.0
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.3.1
